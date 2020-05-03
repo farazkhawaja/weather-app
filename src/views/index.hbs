@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="../img/ge.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        {{>header}}
+    <p>Use this site to get latest weather!</p>
+    <form action="">
+        <input type="text" name="" placeholder="Location">
+        <button>Search</button>
+    </form>
+    <p>location: <span class="loc">-</span></p>
+    <p>Summary: <span class="summ">-</span></p>
+    </div>
+    {{>footer}}
+    <script src="/js/app.js"></script>
+</body>
+</html>
