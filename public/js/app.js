@@ -9,7 +9,7 @@ document.querySelector("form").addEventListener("submit",function(e){
     console.log(search)
     document.querySelector(".loc").innerHTML="Loading Location"
         document.querySelector(".summ").innerHTML="Loading Summary"
-    fetch("http://localhost:3000/weather?address="+search).then(function(response){
+    fetch("/weather?address="+search).then(function(response){
     response.json().then(function(data){
         if (data.error){
             console.log("error")
