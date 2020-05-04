@@ -37,14 +37,14 @@ app.get("/about",function(req,res){
 app.get("/weather",function(req,res){
     if (!req.query.address){
         return res.send({
-            error:"error"
+            error:"Please enter a location"
         })
     }
    util.geocode(req.query.address,function(error,data){
     if (error){
         console.log("cant find")
         return res.send({
-            error:"cant find location"
+            error:"Cant find location"
         })
     }
     else{
