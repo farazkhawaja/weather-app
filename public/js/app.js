@@ -26,3 +26,12 @@ document.querySelector("form").addEventListener("submit",function(e){
 })
 
 })
+document.querySelector("button").addEventListener("click",function(e){
+   e.preventDefault()
+    fetch("/g").then(function(response){
+        response.json().then(function(data){
+          document.querySelector(".summ").innerHTML=data.summ
+          document.querySelector(".loc").innerHTML=data.area
+        })
+      })
+})

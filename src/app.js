@@ -1,16 +1,23 @@
 const path=require("path")
 const express=require("express")
+var bodyParser = require('body-parser');
 const hbs=require("hbs")
 const util=require("./util.js")
-
+const request=require("request")
 const app=express()
 const publicpath=path.join(__dirname,"../public")
 const partialpath=path.join(__dirname,"/template")
 
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
 app.set("view engine","hbs")
 hbs.registerPartials(partialpath)
 app.use(express.static(publicpath))
-
+app.use(bodyParser.urlencoded({ extended: true })); 
 app.get("",function(req,res){
     res.render("index",{
         title:"Weather",
@@ -59,6 +66,24 @@ app.get("/weather",function(req,res){
        
    })
 })
+
+app.post("/geo",function(req,res){
+     lat=req.body.lat,
+    long=req.body.long
+    util.revgeo(lat,long,function(error,data){
+        global.area=data.area
+    })
+    util.forecast(lat,long,function(error,dataf){
+        global.summ=dataf.summary
+       })
+})
+app.get("/g",function(req,res){
+    res.send({
+        summ:global.summ,
+        area:global.area
+    })
+})
+
 app.get("/help/*",function(req,res){
     res.render("404",{
         title:"404 Page",

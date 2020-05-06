@@ -22,7 +22,14 @@ const forecast=function(lat,lon,callback){
            
     })
 }
-
+const revgeo=function(lat,long,callback){
+    url="http://dev.virtualearth.net/REST/v1/Locations/"+lat+","+long+"?o=json&key=AiENWQOdHmtgehmaSGKR6IgNeBQSK8gjAjYrUeyMtBPOW11ypH-yzMTWvXIdAQLZ"
+    request({url:url,json:true},function(error,response){
+        callback(undefined,{
+            area:response.body.resourceSets[0].resources[0].name
+        })
+    })
+}
 const geocode=function(address,callback){
     var geo="http://dev.virtualearth.net/REST/v1/Locations/"+address+"?o=json&key=AiENWQOdHmtgehmaSGKR6IgNeBQSK8gjAjYrUeyMtBPOW11ypH-yzMTWvXIdAQLZ"
     request({url:geo,json:true},function(error,response){
@@ -47,6 +54,7 @@ const geocode=function(address,callback){
 }
 
 module.exports={
+    revgeo:revgeo,
     geocode:geocode,
     forecast:forecast
 }
