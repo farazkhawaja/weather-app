@@ -27,7 +27,6 @@ document.querySelector("form").addEventListener("submit",function(e){
 
 })
 document.querySelector("#demo").addEventListener("click",function(e){
-   e.preventDefault()
     fetch("/g").then(function(response){
         response.json().then(function(data){
           document.querySelector(".summ").innerHTML=data.summ
