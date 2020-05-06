@@ -12,7 +12,7 @@
 <body>
     <div>
         {{>header}}
-        <button>location</button>
+        <button id="demo">Get forecast based on your location</button>
         <p></p>
     <p>Use this site to get latest weather!</p>
     <form action="">
@@ -28,7 +28,7 @@
   <script>
       
 $(document).ready(function(){
-  $("button").click(function(){
+  $("#demo").click(function(){
       if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } 
