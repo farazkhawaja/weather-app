@@ -26,3 +26,19 @@ document.querySelector("form").addEventListener("submit",function(e){
 })
 
 })
+
+document.querySelector("button").addEventListener("click",function(){
+    document.querySelector(".loc").innerHTML="Loading Location"
+        document.querySelector(".summ").innerHTML="Loading Summary"
+    fetch("/geo").then(function(response){
+        response.json().then(function(data){
+            if (data.error){
+                document.querySelector(".loc").innerHTML=data.error
+            document.querySelector(".summ").innerHTML="-"
+            } else{
+                document.querySelector(".loc").innerHTML=data.area
+            document.querySelector(".summ").innerHTML=data.summary
+            }
+        })
+    })})
+    

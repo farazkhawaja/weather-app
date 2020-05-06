@@ -1,8 +1,9 @@
 const path=require("path")
 const express=require("express")
+var bodyParser = require('body-parser');
 const hbs=require("hbs")
 const util=require("./util.js")
-
+const request=require("request")
 const app=express()
 const publicpath=path.join(__dirname,"../public")
 const partialpath=path.join(__dirname,"/template")
@@ -10,7 +11,7 @@ const partialpath=path.join(__dirname,"/template")
 app.set("view engine","hbs")
 hbs.registerPartials(partialpath)
 app.use(express.static(publicpath))
-
+app.use(bodyParser.urlencoded({ extended: true })); 
 app.get("",function(req,res){
     res.render("index",{
         title:"Weather",
@@ -58,6 +59,29 @@ app.get("/weather",function(req,res){
     }
        
    })
+})
+app.get("/geo",function(req,res){
+    var url="http://ipinfo.io/geo?token=7ea1023f74c4be"
+    request({url,json:true},function(error,data){
+    console.log(data.body.loc)
+    if (error){
+        return res.send({
+            error: "turn on gps"
+        })
+    }
+    else{
+            lat=data.body.loc.split(",")[0]
+            long=data.body.loc.split(",")[1]
+            util.forecast(lat,long,function(error,dataf){
+                res.send({
+                    summary:dataf.summary,
+                    area:data.body.city+","+data.body.region
+
+                })
+               })
+    }
+
+})
 })
 app.get("/help/*",function(req,res){
     res.render("404",{
