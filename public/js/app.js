@@ -12,8 +12,7 @@ document.querySelector("form").addEventListener("submit",function(e){
     fetch("/weather?address="+search).then(function(response){
     response.json().then(function(data){
         if (data.error){
-            console.log("error")
-            document.querySelector(".loc").innerHTML="Cant find location. Try Again"
+            document.querySelector(".loc").innerHTML="-"
             document.querySelector(".summ").innerHTML="-"
         } else{
         console.log(data.area)
@@ -37,6 +36,8 @@ document.querySelector("button").addEventListener("click",function(){
                 document.querySelector(".loc").innerHTML=data.error
             document.querySelector(".summ").innerHTML="-"
             } else{
+                
+
                 document.querySelector(".loc").innerHTML=data.area
             document.querySelector(".summ").innerHTML=data.summary
             }
