@@ -32,5 +32,8 @@ document.querySelector("#demo").addEventListener("click",function(e){
           document.querySelector(".summ").innerHTML=data.summ
           document.querySelector(".loc").innerHTML=data.area
         })
-      })
+      if (document.querySelector(".summ").innerHTML=="undefined"){
+          document.querySelector("#demo").innerHTML="Click again"
+      }
+        })
 })
