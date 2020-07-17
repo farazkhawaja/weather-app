@@ -12,7 +12,7 @@ document.querySelector("form").addEventListener("submit",function(e){
     fetch("/weather?address="+search).then(function(response){
     response.json().then(function(data){
         if (data.error){
-            document.querySelector(".loc").innerHTML="Try again"
+            document.querySelector(".loc").innerHTML="Please Try again"
             document.querySelector(".summ").innerHTML="--"
         } else{
         console.log(data.area)
