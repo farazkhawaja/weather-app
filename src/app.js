@@ -79,11 +79,16 @@ app.post("/geo",function(req,res){
 })
 
 app.post("/email",function(req,res){
-    if (req.body.send){
-        console.log("xd")
-        console.log(req.body.search)
+    lat=req.body.lat,
+    long=req.body.long
+    util.revgeo(lat,long,function(error,data){
+        global.area=data.area
+    })
+    util.forecast(lat,long,function(error,dataf){
+        global.summ=dataf.summary
+       })
  
-
+  console.log(req.body.send)
     }
 })
 app.get("/g",function(req,res){
