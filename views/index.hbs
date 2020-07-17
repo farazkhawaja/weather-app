@@ -22,7 +22,7 @@
     <p>location: <span class="loc">-</span></p>
     <p>Summary: <span class="summ">-</span></p>
   
-    <form action="" style="display:none;" id="form">
+    <form action="" style="display: none;" id="form">
       <input type="text" name="" placeholder="example@foo.com" id="input">
     <button id="email"></button></form>
     <p id="status"></p>
@@ -33,7 +33,8 @@
   <script>
       
 $(document).ready(function(){
-  $("#demo").click(function(){
+  $("#demo").click(function(e){
+    e.preventDefault()
       if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } 
@@ -50,30 +51,24 @@ $(document).ready(function(){
 
   ;
   })
-    
-});
-
-$(document).ready(function(){
     $("#email").click(function(e){
-    e.preventDefault()
-
         $('#status').html("Email sent")
         $('#status').fadeToggle(5000);
-        
+        e.preventDefault()
         console.log($(".loc").html())
                 $.post("/email",
                 {
                   send:"yes",
                   text:"Area: "+$(".loc").html()+"--- "+"             Summary: "+$(".summ").html(),
                   search:$('#input').val(),
-
+                    
                 })
-                
+                console.log(search)
 
         })
-       
-    
-    })
+});
+
+      
 
 
 </script>
