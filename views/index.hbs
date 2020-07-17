@@ -54,7 +54,9 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $("#email").click(function(){
+    $("#email").click(function(e){
+    e.preventDefault()
+
         $('#status').html("Email sent")
         $('#status').fadeToggle(5000);
         
