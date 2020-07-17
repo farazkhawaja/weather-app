@@ -82,30 +82,6 @@ app.post("/email",function(req,res){
     if (req.body.send){
         console.log("xd")
         console.log(req.body.search)
-        const nodemailer = require('nodemailer');
-
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'weatherapplication567',
-    pass: 'farazkhawaja123' // naturally, replace both with your real credentials or an application-specific password
-  }
-});
-
-const mailOptions = {
-  from: 'weather-app@weather.com',
-  to: req.body.search,
-  subject: 'Weather Forecast',
-  text: req.body.text
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-	console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
  
 
     }
