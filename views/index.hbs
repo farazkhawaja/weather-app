@@ -17,10 +17,15 @@
     <p>Use this site to get latest weather!</p>
     <form action="">
         <input type="text" name="" placeholder="Location">
-        <button>Search</button>
+        <button id="search">Search</button>
     </form>
     <p>location: <span class="loc">-</span></p>
     <p>Summary: <span class="summ">-</span></p>
+  
+    <form action="" style="display: block;" id="form">
+      <input type="text" name="" placeholder="example@foo.com" id="input">
+    <button id="email"></button></form>
+    <p id="status"></p>
     </div>
     {{>footer}}
     <script src="/js/app.js"></script>
@@ -47,6 +52,9 @@ $(document).ready(function(){
   })
     
 });
+
+
+
 </script>
 </body>
 </html>
