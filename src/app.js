@@ -1,3 +1,4 @@
+const sendmail = require('sendmail')()
 const path=require("path")
 const express=require("express")
 var bodyParser = require('body-parser');
@@ -110,6 +111,13 @@ transporter.sendMail(mailOptions, function(error, info){
 
     }
 })
+app.get("/g",function(req,res){
+    res.send({
+        summ:global.summ,
+        area:global.area
+    })
+})
+
 app.get("/help/*",function(req,res){
     res.render("404",{
         title:"404 Page",
@@ -127,3 +135,4 @@ app.get("*",function(req,res){
 app.listen(process.env.PORT || 3000,function(){
     console.log("run")
 })
+
