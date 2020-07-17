@@ -45,21 +45,3 @@ document.querySelector("#demo").addEventListener("click",function(e){
         })
 })
 
-$(document).ready(function(){
-    $("#email").click(function(e){
-        $('#status').html("Email sent")
-        $('#status').fadeToggle(5000);
-        e.preventDefault()
-                $.post("/email",
-                {
-                  send:"yes",
-                  text:"Area: "+$(".loc").html()+"--- "+"             Summary: "+$(".summ").html(),
-                  search:$('#input').val(),
-
-                })
-                
-
-        })
-       
-    
-    })
