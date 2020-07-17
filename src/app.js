@@ -6,6 +6,7 @@ const util=require("./util.js")
 const request=require("request")
 const app=express()
 const publicpath=path.join(__dirname,"../public")
+const nodemailer = require('nodemailer')
 const partialpath=path.join(__dirname,"/template")
 
 var bodyParser = require('body-parser')
