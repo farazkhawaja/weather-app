@@ -79,25 +79,37 @@ app.post("/geo",function(req,res){
 })
 
 app.post("/email",function(req,res){
-    lat=req.body.lat,
-    long=req.body.long
-    util.revgeo(lat,long,function(error,data){
-        global.area=data.area
-    })
-    util.forecast(lat,long,function(error,dataf){
-        global.summ=dataf.summary
-       })
+    if (req.body.send){
+        console.log("xd")
+        console.log(req.body.search)
+        const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'weatherapplication567',
+    pass: 'farazkhawaja123' // naturally, replace both with your real credentials or an application-specific password
+  }
+});
+
+const mailOptions = {
+  from: 'weather-app@weather.com',
+  to: req.body.search,
+  subject: 'Weather Forecast',
+  text: req.body.text
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+	console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
  
-  console.log(req.body.send)
+
     }
 })
-app.get("/g",function(req,res){
-    res.send({
-        summ:global.summ,
-        area:global.area
-    })
-})
-
 app.get("/help/*",function(req,res){
     res.render("404",{
         title:"404 Page",
