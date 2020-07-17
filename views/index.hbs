@@ -54,10 +54,10 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $("#email").click(function(e){
+    $("#email").click(function(){
         $('#status').html("Email sent")
         $('#status').fadeToggle(5000);
-        e.preventDefault()
+        
         console.log($(".loc").html())
                 $.post("/email",
                 {
