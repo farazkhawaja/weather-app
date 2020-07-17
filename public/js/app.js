@@ -13,7 +13,7 @@ document.querySelector("form").addEventListener("submit",function(e){
     response.json().then(function(data){
         if (data.error){
             document.querySelector(".loc").innerHTML="Try again"
-            document.querySelector(".summ").innerHTML="-"
+            document.querySelector(".summ").innerHTML="--"
         } else{
         console.log(data.area)
         console.log(data.summary)
