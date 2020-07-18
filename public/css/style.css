@@ -12,6 +12,7 @@ button{
     padding: 0.3em;
 }
 body{
+    background-color:blue;
     background-size:cover;
     margin: 0 auto;
     max-width:50%;
