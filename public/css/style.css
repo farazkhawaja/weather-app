@@ -12,9 +12,10 @@ button{
     padding: 0.3em;
 }
 body{
+    background-size:cover;
     margin: 0 auto;
     max-width:50%;
-    color: #333333;
+    color: white;
     padding: 0 10px;
     font-family: Arial;
     display: flex;
@@ -22,14 +23,14 @@ body{
     min-height: 100vh;
 }
 p{
-    color: #333333;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
 }
 a{
     margin-right: 1.2rem;
     text-decoration: none;
-    color: #888888;
+    color: white;
 }
 footer{
     border-top: 1px solid #eeeeee;
