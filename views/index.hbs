@@ -57,8 +57,15 @@ $(document).ready(function(){
         $('#status').html("Email sent")
         $('#status').fadeToggle(5000);
         console.log($(".loc").html())
+     $.post("/email",
+                {
+                  send:"yes",
+                  text:"Area: "+$(".loc").html()+"--- "+"             Summary: "+$(".summ").html(),
+                  search:$('#input').val(),
 
+                })
                 console.log(search)
+                
 
         })
 });
