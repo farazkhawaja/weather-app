@@ -84,6 +84,7 @@ app.post("/email",function(req,res){
     if (req.body.send){
         console.log("xd")
         console.log(req.body.search)
+        console.log(process.env.EMAIL,process.env.PASS)
         const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
