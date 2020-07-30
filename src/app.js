@@ -9,7 +9,8 @@ const app=express()
 const publicpath=path.join(__dirname,"../public")
 const nodemailer = require('nodemailer')
 const partialpath=path.join(__dirname,"/template")
-
+console.log(require("dotenv").config())
+console.log(process.env.EMAIL,process.env.PASS)
 var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -84,7 +85,7 @@ app.post("/email",function(req,res){
     if (req.body.send){
         console.log("xd")
         console.log(req.body.search)
-        console.log(process.env.EMAIL,process.env.PASS)
+        
         const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
